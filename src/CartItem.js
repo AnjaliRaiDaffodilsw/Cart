@@ -69,6 +69,7 @@ export default class CartItem extends Component {
 //     }
     render() {
         const { price, title, qty } = this.props.product;
+        const { product , onIncreaseQuantity , onDecreaseQuantity , onDeleteProduct } = this.props;
         return (
             <div className="cart-item" >
                 {/* {this.props.jsx} */}
@@ -96,7 +97,7 @@ export default class CartItem extends Component {
                             className="acion-icons" 
                             src="https://as2.ftcdn.net/jpg/01/07/62/07/500_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg"
                             style={styless.image} 
-                            onClick = {() => this.props.onIncreaseQuantity(this.props.product)}
+                            onClick = {() => onIncreaseQuantity(product)}
 
                         />
                         <img 
@@ -104,7 +105,7 @@ export default class CartItem extends Component {
                             className="acion-icons" 
                             style={styless.image} 
                             src="https://as1.ftcdn.net/jpg/03/73/49/86/500_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg"
-                            onClick = {this.decreaseQuantity}
+                            onClick = {() => onDecreaseQuantity(product)}
                         />
                         <img 
                             alt="delete"
@@ -112,6 +113,7 @@ export default class CartItem extends Component {
                             style={styless.image} 
                             src="https://as2.ftcdn.net/jpg/00/98/26/11/500_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg"
                             onClick = {this.deleteQuantity}
+                            onClick = { () => onDeleteProduct(product.id)}
                         />
                     </div>
                 </div>
