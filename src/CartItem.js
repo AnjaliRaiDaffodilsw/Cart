@@ -1,72 +1,72 @@
 import React, { Component } from 'react'
 
 export default class CartItem extends Component {
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //         price: 999,
-    //         title: 'Phone',
-    //         qty: 1,
-    //         img: ''
-    //     }
-    //     // this.testing();
-    // }
+//     // constructor() {
+//     //     super()
+//     //     this.state = {
+//     //         price: 999,
+//     //         title: 'Phone',
+//     //         qty: 1,
+//     //         img: ''
+//     //     }
+//     //     // this.testing();
+//     // }
 
-    // testing() {
-    //     const promise = new Promise((resolve,reject) => {
-    //         setTimeout(() => {
-    //             resolve('done');
-    //         }, 5000);
-    //     })
+//     // testing() {
+//     //     const promise = new Promise((resolve,reject) => {
+//     //         setTimeout(() => {
+//     //             resolve('done');
+//     //         }, 5000);
+//     //     })
 
-    //     promise.then( () => {
-    //         //setState acts like a synchronous call
-    //         // this.setState({qty : 100});
-    //         this.setState({qty : this.state.qty + 10});
+//     //     promise.then( () => {
+//     //         //setState acts like a synchronous call
+//     //         // this.setState({qty : 100});
+//     //         this.setState({qty : this.state.qty + 10});
 
 
-    //         console.log('state',this.state);
-    //     })
-    // }
-//alternative to this
-// onClick = {this.increaseQuantity.bind(this)}
-    increaseQuantity = () => {
-      //set state form 1
-      //React does Batching for all the event handler no matter how many timees you call set state - componenets will render only once
-        // this.setState({
-        //     qty : this.state.qty + 1
+//     //         console.log('state',this.state);
+//     //     })
+//     // }
+// //alternative to this
+// // onClick = {this.increaseQuantity.bind(this)}
+//     increaseQuantity = () => {
+//       //set state form 1
+//       //React does Batching for all the event handler no matter how many timees you call set state - componenets will render only once
+//         // this.setState({
+//         //     qty : this.state.qty + 1
 
-        // });
+//         // });
 
-         //set state form 2 - if preious state required use this 
-        //set state call is asynch
-         //it will maintain queue because of callback
-         this.setState((prevState) => {
-            return {
-                qty : prevState.qty + 1
-            }
-        });
-    }
+//          //set state form 2 - if preious state required use this 
+//         //set state call is asynch
+//          //it will maintain queue because of callback
+//          this.setState((prevState) => {
+//             return {
+//                 qty : prevState.qty + 1
+//             }
+//         });
+//     }
 
-    decreaseQuantity = () => {
-        const { qty } = this.state;
-        if(qty == 0) {
-            return;
-        }
-        this.setState((prevState) => {
-            return {
-                qty : prevState.qty - 1
-            }
-        });
-    }
+//     decreaseQuantity = () => {
+//         const { qty } = this.state;
+//         if(qty == 0) {
+//             return;
+//         }
+//         this.setState((prevState) => {
+//             return {
+//                 qty : prevState.qty - 1
+//             }
+//         });
+//     }
 
-    deleteQuantity = () => {
-        this.setState({
-                qty : 0,
-                price : 0,
-                title : 'Empty'
-            });
-    }
+//     deleteQuantity = () => {
+//         this.setState({
+//                 qty : 0,
+//                 price : 0,
+//                 title : 'Empty'
+//             });
+//     }
     render() {
         const { price, title, qty } = this.props.product;
         return (
@@ -96,7 +96,8 @@ export default class CartItem extends Component {
                             className="acion-icons" 
                             src="https://as2.ftcdn.net/jpg/01/07/62/07/500_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg"
                             style={styless.image} 
-                            onClick = {this.increaseQuantity}
+                            onClick = {() => this.props.onIncreaseQuantity(this.props.product)}
+
                         />
                         <img 
                             alt="decrease"

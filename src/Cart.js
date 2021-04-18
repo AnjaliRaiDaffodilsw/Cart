@@ -30,6 +30,15 @@ class Cart extends Component {
             ]
         }
     }
+    handleIncreaseQuantity = (product) => {
+        const { products } = this.state;
+        const index = products.indexOf(product);
+
+        products[index].qty += 1;
+        this.setState({
+            products : products
+        })
+    }
     render() {
         const { products } = this.state;
         // const arr = [1,2,3,4,5];
@@ -45,8 +54,10 @@ class Cart extends Component {
                 {products.map((product) => {
                     return <CartItem
                         product={product}
-                        key={product.id} 
-                        component = {<CartItem /> }/>
+                        key={product.id}
+                        // component = {<CartItem /> }
+                        onIncreaseQuantity={this.handleIncreaseQuantity}
+                    />
                 })}
 
             </div>
