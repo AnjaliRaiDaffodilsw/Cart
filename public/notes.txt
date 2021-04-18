@@ -1,0 +1,15 @@
+ set state form 1
+      React does Batching for all the event handler no matter how many timees you call set state - componenets will render only once
+         this.setState({
+             qty : this.state.qty + 1
+
+         });
+
+         set state form 2 - if preious state required use this 
+        set state call is asynch
+         it will maintain queue because of callback
+         this.setState((prevState) => {
+            return {
+                qty : prevState.qty + 1
+            }
+        });
