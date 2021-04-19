@@ -64,6 +64,11 @@ class App extends React.Component {
     firebase
         .firestore()
         .collection('products')
+        //query perform
+        // .where('price','==' ,500)
+        // .where('title', '==' ,'cup')
+        //sort the data according to price
+        .orderBy('price','desc')
         .onSnapshot((snapshot)=>{
           console.log(snapshot);
           snapshot.docs.map((doc) => {
