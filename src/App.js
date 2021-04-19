@@ -45,7 +45,7 @@ class App extends React.Component {
     const index = products.indexOf(product);
 
 
-    if (products[index].qty == 0) {
+    if (products[index].qty === 0) {
       return;
     }
     products[index].qty -= 1;

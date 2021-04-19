@@ -76,6 +76,8 @@ const CartItem = (props) => {
                 <img
                     style={styles.image}
                     src={ product.img }
+
+                    alt = "cart-item"
                 />
             </div>
             <div className="right-block">
